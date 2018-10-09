@@ -1,12 +1,56 @@
-body { margin: 0; }
+body { 
+	margin: 0; 
+    background: black;
+    width: 100%;
+	height: 100%;
+     /*#d3d3d3; /* Grey background */
+	/*color: black;*/
+}
 
-#scene { width: 90%; height: 90%}
+#scene { width: 50%; height: 50%;
+/*float:right; }*/
+}
 
 /* SVG styling */
-svg {
+.svg {
+
     font-family: helvetica, sans-serif;
+    width:50%;
+    height:50%;
+    background:white;
+    border: 1px red;
+    position :absolute;
+
 }
 
 path, line {
     stroke: #777;
 }
+
+/*#parent{
+	width: 100%;
+	height: 100%;
+}*/
+
+ #slider{
+  -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 50%; /* Full-width */
+    height: 8px; /* Specified height */
+    background: #4F34B8; /*#d3d3d3; /* Grey background */
+    outline: #4F34B8; /* Remove outline */
+    opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    margin-top: 30;
+    /*float:right;*/
+   }
+
+  #canvas{
+  	float:right;
+  	background:black;
+  	width: 50%;
+  	height: 50%;
+  }
+
+

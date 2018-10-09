@@ -63,3 +63,4 @@ var Scene = function(options) {
 
     return self.public;
 };
+

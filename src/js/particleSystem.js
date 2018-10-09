@@ -18,6 +18,7 @@ var ParticleSystem = function() {
     var bounds = {};
 
     var pi = 3.147;
+    var cylinder;
 
     // create the containment box.
     // This cylinder is only to guide development.
@@ -30,7 +31,8 @@ var ParticleSystem = function() {
 
         // create a cylinder to contain the particle system
         //var geometry = new THREE.CylinderBufferGeometry( radius, radius, height, 32 );
-        var geometry = new THREE.CylinderGeometry( radius, radius, height, 32 );
+        // var geometry = new THREE.CylinderGeometry( radius, radius, height, 32 );
+        var geometry = new THREE.BufferGeometry( radius, radius, height, 32 );
         // var material = new THREE.MeshNormalMaterial( {color: 0xffff00, wireframe: true} );
         // var cylinder = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
 
@@ -41,7 +43,7 @@ var ParticleSystem = function() {
 
         var color = new THREE.Color();
                 var n = 1000, n2 = n / 2;
-
+        var material = [];      
 
         for(var i = 0; i< data.length; i++) {
         var x = (data[i].X ) ;//* height + 2 * pi * radius * radius  ;
@@ -50,44 +52,69 @@ var ParticleSystem = function() {
 
 
 
-        // positions.push( x, y, z );
+        positions.push( x, z, y );
         //             // colors
-        //     var colormax = 357.19;
-        //     var colormin = 0;
+            var colormax = 357.19;
+            var colormin = 0;
 
-        //             var cx = ( data[i].concentration / colormax ) ;
-        //             var cy = ( data[i].concentration / colormax ) ;
-        //             var cz = ( data[i].concentration / colormax );
-        //             color.setRGB( cx, cy, cz );
-        //             colors.push( color.r, color.g, color.b );
+            // var vx = ( x / n ) + 0.5;
+            //         var vy = ( y / n ) + 0.5;
+            //         var vz = ( z / n ) + 0.5;
+                    // if(data[i].Z > height/6){
+                    var cx = 0.9;
+                    var cy = 1 -  ( data[i].concentration / colormax ) ;
+                    var cz = 0.9 ;
+                // }
+                // else {
+                //     var cx = ( 1 ) ;
+                //     var cy = 1;
+                //     var cz = ( data[i].concentration / colormax );
+                // }
+                    color.setRGB( cx, cy, cz );
+                    colors.push( color.r, color.g, color.b );
 
-        geometry.vertices.push(new THREE.Vector3(x, z, y));
+        // geometry.vertices.push(new THREE.Vector3(x, z, y));
         // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
+       //
 
     }
 
-    // geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
-    //             geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-    //             geometry.computeBoundingSphere();
+    geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+                geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+                geometry.computeBoundingSphere();
 
-
-        var material = new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
-        // var material = new THREE.PointsMaterial({size:1, vertexColors: THREE.VertexColors});//, opacity:0.3});
-        var cylinder = new THREE.Points(geometry, material);
+        // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
+        
+        var material = new THREE.PointsMaterial({ size:0.01, vertexColors: THREE.VertexColors});//, opacity:0.3});
+        cylinder = new THREE.Points(geometry, material);
 
         // var pointCloud = new THREE.Points(geometry, material);
-        
+    var filterbox = new THREE.PlaneGeometry( radius *2 + 2, height, 32 );
 
-    // geometry.verticesNeedUpdate = true;
-    // geometry.computeVertexNormals();
-    // geometry.elementsNeedUpdate = true;
+    var material = new THREE.MeshBasicMaterial( { side: THREE.DoubleSide, transparent: true, opacity:0.5} );
+    var plane = new THREE.Mesh( filterbox, material );
+     // var edges = new THREE.EdgesGeometry( plane );
+    // var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xdf65b0, opacity: 1.0} ) );
+    sceneObject.add( plane );   
+    // sceneObject.add(line); 
+    var slider = document.getElementById("slider");
+    slider.addEventListener("input", movePlane);
+
 
     sceneObject.add(cylinder);
     // sceneObject.add(pointCloud);
 
-        // add the containment to the scene
+     function movePlane(e){
+    var target = (e.target) ? e.target : e.srcElement;
+        plane.position.z = target.value;
+        // console.log("Z value: ", plane.position.z );
+        var d3canvas = new d3Canvas();
+        d3canvas.clearCanvas((parseFloat(plane.position.z)).toFixed(2));
+        // d3canvas.zvalueslider = plane.position.z;
+        // line2.position.z = target.value;    
+    }   // add the containment to the scene
         //sceneObject.add(cylinder);
-    console.log("now",scene.children);
+    // console.log("now",scene.children);
     // sceneObject.remove(geometry);        
     };
 

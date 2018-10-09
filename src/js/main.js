@@ -12,6 +12,8 @@ var App = App || {};
     /* Entry point of the application */
     App.start = function()
     {
+        var d3canvas = new d3Canvas();
+        d3canvas.render("-3.2");
         // create a new scene
         App.scene = new Scene({container:"scene"});
 
@@ -25,6 +27,9 @@ var App = App || {};
         // render the scene
         App.scene.render();
 
+        
+        // // d3canvas.initialize('data/058.csv');
+        // console.log("hello");
     };
 
 }) ();
