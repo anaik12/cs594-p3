@@ -2,16 +2,83 @@ body {
 	margin: 0; 
     background: black;
     width: 100%;
-	height: 100%;
+	height: 150%;
      /*#d3d3d3; /* Grey background */
 	/*color: black;*/
 }
 
-#scene { width: 50%; height: 50%;
-/*float:right; }*/
+#scene { width: 100%; height: 50%;
+}
+/*}*/
+
+.canvasDiv {
+  height: 100%;
+  border-left:1px solid white;
+  /*border-radius: 25px;*/
 }
 
-/* SVG styling */
+/*.particleDiv {
+  border-right:1px solid white;
+  /*border-radius: 25px;*/
+/*}*/
+
+.p{
+  color:white; 
+  /*float:center; */
+  font-size:12px;
+  background-color: #4F34B8;
+  border: 1px solid white;
+  margin-top: 30px;
+  border-radius: 5px;
+  /*padding-top: 10px;*/
+}
+
+
+
+.p1{
+  width: 25%;
+  color:white; 
+  /*float:center; */
+  font-size:12px;
+  background-color: #4F34B8;
+  border: 1px solid white;
+  border-radius: 5px;
+  float:center;
+  padding-left: 150px;
+  margin-left: 20px;
+}
+
+.p3{
+  width: 25%;
+  color:white; 
+  /*float:center; */
+  font-size:12px;
+  background-color: #4F34B8;
+  border: 1px solid white;
+  border-radius: 5px;
+  float:center;
+  padding-left: 15px;
+  margin-left: 20px
+  margin-top: 10px;
+}
+
+.p4{
+  width: 25%;
+  color:white; 
+  /*float:center; */
+  font-size:12px;
+  background-color: #4F34B8;
+  border: 1px solid white;
+  border-radius: 5px;
+  float:center;
+  padding-left: 9%;
+  margin-left: 55%;
+  margin-top: 10px;
+}
+
+
+
+/* SVG styling 
 .svg {
 
     font-family: helvetica, sans-serif;
@@ -35,14 +102,16 @@ path, line {
  #slider{
   -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 50%; /* Full-width */
+    width: 25%; /* Full-width */
     height: 8px; /* Specified height */
     background: #4F34B8; /*#d3d3d3; /* Grey background */
     outline: #4F34B8; /* Remove outline */
     opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
-    margin-top: 30;
+    margin-bottom: 20px;
+    /*padding-left: 20px;*/
+    margin-left: 20px
     /*float:right;*/
    }
 
@@ -52,5 +121,15 @@ path, line {
   	width: 50%;
   	height: 50%;
   }
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: white;
+}
+a:hover {
+    color: red;
+}
 
 

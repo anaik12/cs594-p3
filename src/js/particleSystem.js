@@ -46,36 +46,26 @@ var ParticleSystem = function() {
         var material = [];      
 
         for(var i = 0; i< data.length; i++) {
-        var x = (data[i].X ) ;//* height + 2 * pi * radius * radius  ;
-        var y = (data[i].Y );///radius ;//* height + 2 * pi * radius * radius  ;
-        var z = (data[i].Z - height/2 );//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+            var x = (data[i].X ) ;//* height + 2 * pi * radius * radius  ;
+            var y = (data[i].Y );///radius ;//* height + 2 * pi * radius * radius  ;
+            var z = (data[i].Z - height/2 );//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
 
 
 
-        positions.push( x, z, y );
+            positions.push( x, z, y );
         //             // colors
             var colormax = 357.19;
             var colormin = 0;
 
-            // var vx = ( x / n ) + 0.5;
-            //         var vy = ( y / n ) + 0.5;
-            //         var vz = ( z / n ) + 0.5;
-                    // if(data[i].Z > height/6){
-                    var cx = 0.9;
-                    var cy = 1 -  ( data[i].concentration / colormax ) ;
-                    var cz = 0.9 ;
-                // }
-                // else {
-                //     var cx = ( 1 ) ;
-                //     var cy = 1;
-                //     var cz = ( data[i].concentration / colormax );
-                // }
-                    color.setRGB( cx, cy, cz );
-                    colors.push( color.r, color.g, color.b );
+            var cx = 0.9;
+            var cy = 1 -  ( data[i].concentration / colormax ) ;
+            var cz = 0.9;
+            
+            color.setRGB( cx, cy, cz );
+            colors.push( color.r, color.g, color.b );
 
         // geometry.vertices.push(new THREE.Vector3(x, z, y));
         // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
-       //
 
     }
 
@@ -85,17 +75,21 @@ var ParticleSystem = function() {
 
         // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
         
-        var material = new THREE.PointsMaterial({ size:0.01, vertexColors: THREE.VertexColors});//, opacity:0.3});
-        cylinder = new THREE.Points(geometry, material);
+    var material = new THREE.PointsMaterial({ size:0.01, vertexColors: THREE.VertexColors});//, opacity:0.3});
+    cylinder = new THREE.Points(geometry, material);
 
         // var pointCloud = new THREE.Points(geometry, material);
     var filterbox = new THREE.PlaneGeometry( radius *2 + 2, height, 32 );
 
     var material = new THREE.MeshBasicMaterial( { side: THREE.DoubleSide, transparent: true, opacity:0.5} );
+    // var material = new THREE.LineBasicMaterial({color: 0xffffff, transparent: true });
     var plane = new THREE.Mesh( filterbox, material );
-     // var edges = new THREE.EdgesGeometry( plane );
-    // var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xdf65b0, opacity: 1.0} ) );
+    
     sceneObject.add( plane );   
+
+    // var linemat = new THREE.LineBasicMaterial( { color: 0xff0000, transparent: true } );
+    // var line = new THREE.Line( plane, linemat );
+    // sceneObject.add( line );
     // sceneObject.add(line); 
     var slider = document.getElementById("slider");
     slider.addEventListener("input", movePlane);
@@ -104,7 +98,7 @@ var ParticleSystem = function() {
     sceneObject.add(cylinder);
     // sceneObject.add(pointCloud);
 
-     function movePlane(e){
+    function movePlane(e){
     var target = (e.target) ? e.target : e.srcElement;
         plane.position.z = target.value;
         // console.log("Z value: ", plane.position.z );
@@ -113,9 +107,13 @@ var ParticleSystem = function() {
         // d3canvas.zvalueslider = plane.position.z;
         // line2.position.z = target.value;    
     }   // add the containment to the scene
-        //sceneObject.add(cylinder);
-    // console.log("now",scene.children);
-    // sceneObject.remove(geometry);        
+    
+    // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+
+
+
+
     };
 
     // creates the particle system

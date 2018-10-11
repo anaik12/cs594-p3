@@ -4,7 +4,7 @@
     <meta charset=utf-8>
     <!-- <meta content="utf-8" http-equiv="encoding"> -->
 
-    <title>Assignment 3 -- three.js Robot</title>
+    <title>Assignment 3 - Flow Vis</title>
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -31,20 +31,37 @@
     <!-- <div id="parent">
             </div>
     -->
+    <!-- <div> -->
+    <div class="col-md-9"><p class="p4" style="float:center"> Flow Viz </p></div>
+    <div class="col-md-3"><a href="Credits.html" class="p3" style="float: right">Credits</a></div>
+    <!-- </div> -->
     <div class="container-fluid">
         <div class="row">
+
+            
             <div class="particleDiv col-md-6">
-
-
-                <div id="scene"><p class="p" style="color:white; float: right; font-size:20px"> 3D View </p></div>
-                <p class="p" style="color:white;"> Filter </p>
-        <input type="range" min="-4.9" max="4.9" value="0" step="0.01" id="slider"  style="position:relative;">
+                <div id="scene"><center><p class="p"> 3D View </p></center></div>
             </div>
-        </div>
+            
+
+            <!-- <div class="noDiv col-md-1"> </div> -->
+            
+            <div class="canvasDiv col-md-6"><center><p class="p"> 2D View </p> </center></div>
+            
+            </div>
+            </div>
+
+
+                <p class="p1" style="color:white;"> Filter </p>
+        <input type="range" min="-4.9" max="4.9" value="0" step="0.01" id="slider"  style="position:relative;">
+            
+        
+    <!-- </div> -->
+
+     
          <!-- <div id="canvas"> <svg width="400" height="400"> <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" /></svg>
     </div> -->
-
-</div>
+    <p style="color:white">This is a flow Visualization of 1 timestep from computational fluid flow simulation dataset from the San Diego Supercomputing Center. It has a 3D view and a 2D View. The 3D view consists of a point cloud  </p>
 
 </body>
 </html>

@@ -12,9 +12,13 @@ var d3Canvas = function() {
 	d3.csv('data/058.csv' , function(data){
 
 	d3.selectAll("svg").remove();
-	svgContainer = d3.select("body").append("svg")
+	svgContainer = d3.select('.canvasDiv').append("svg")
 	                                  .attr("width", 500)
-	                                   .attr("height", 500);
+	                                   .attr("height", 500)
+	                                   .attr("border", "1px solid white");
+	                                   // .attr("float", "right")
+	                                   // .attr("position", "absolute")
+	                                   // .attr("border", "2px red");
 
 	var zvalues = d3.nest()
 	  .key(function(d) { return (parseFloat(d.Points1)).toFixed(2); })
@@ -43,10 +47,10 @@ var d3Canvas = function() {
 	                         .data(keyvalues)
 	                         .enter()
 	                         .append("circle")
-	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*25 + 350; })
-							.attr("cy",  function (d) {  return parseFloat(d.Points2)*25 + 50; })
+	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*25 + 300; })
+							.attr("cy",  function (d) {  return parseFloat(d.Points2)*25 + 150; })
 							.attr("r", 2)
-							.attr("stroke", "#FF69B4");
+							.attr("fill", "#990099");//#FF69B4");
 
 		})
 	}
@@ -61,9 +65,10 @@ var d3Canvas = function() {
 	d3.csv('data/058.csv' , function(data){
 
 		d3.selectAll("svg").remove();
-	var svgContainer = d3.select("body").append("svg")
+	var svgContainer = d3.select('.canvasDiv').append("svg")
 	                                  .attr("width", 500)
-	                                   .attr("height", 500);
+	                                   .attr("height", 500)
+	                                   .attr("border", "1px solid white");
 
 	var zvalues = d3.nest()
 	  .key(function(d) { return (parseFloat(d.Points1)).toFixed(1); })
@@ -85,22 +90,24 @@ var d3Canvas = function() {
 
 
 	  var key = zvalueslider;
-	  console.log("key now is", key);
+	  // console.log("key now is", key);
 
 	  // var keyvalues = findPointZvalueY("0.0");
 
      var keyvalues = findPointZvalueY(zvalueslider);
 
-
+     // svgContainer.selectAll("rect")
+     // .append()
 
 	svgContainer.selectAll("circle")
 	                         .data(keyvalues)
 	                         .enter()
 	                         .append("circle")
-	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*25 + 350; })
-							.attr("cy",  function (d) {  return parseFloat(d.Points2)*25 + 50; })
+	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*25 + 300; })
+							.attr("cy",  function (d) {  return parseFloat(d.Points2)*25 + 150; })
 							.attr("r", 2)
-							.attr("stroke", "#FF69B4");
+							// .attr("stroke", "#FF69B4");
+							.attr("fill", "#990099");
 
 		})
 

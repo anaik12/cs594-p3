@@ -57,6 +57,16 @@ var Scene = function(options) {
             requestAnimationFrame( self.public.render );
             controls.update();
             self.renderer.render( self.scene, self.camera );
+
+            // var raycaster = new THREE.Raycaster();
+
+            // // var camera = new Scene();
+
+            // raycaster.setFromCamera( plane, self.camera );
+
+            // var intersects = raycaster.intersectObject( mesh );
+
+            // console.log(intersects);
         }
 
     };
